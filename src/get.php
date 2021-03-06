@@ -49,7 +49,6 @@ function getSortStats($connect, $data)
     if ($exist) {
 		$key = array_search($order, $allowed);
 		$orderby = $allowed[$key];
-		echo $orderby;
 		$query = $connect->query("SELECT *, cost/clicks AS cpc, cost/views*1000 AS cpm
 								  FROM stats
 								  WHERE date BETWEEN '$from' AND '$to'
@@ -58,7 +57,7 @@ function getSortStats($connect, $data)
 			$stats_list = [];
 			while ($stats = $query->fetch_assoc())
 				$stats_list[] = $stats;
-			echo json_encode($stats_list);
+			echo json_encode($stats_list, JSON_PRETTY_PRINT);
 	    } else
 	        $er->err("Sorry, some problems with database.", 500);
     } elseif (!$exist) {
@@ -70,7 +69,7 @@ function getSortStats($connect, $data)
 			$stats_list = [];
 			while ($stats = $query->fetch_assoc())
 				$stats_list[] = $stats;
-			echo json_encode($stats_list);
+			echo json_encode($stats_list, JSON_PRETTY_PRINT);
 		}
 	} else
         $error->err("Check parameter.", 422);

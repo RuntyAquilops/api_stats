@@ -10,7 +10,7 @@ function delStats($connect)
 	$error = new Errors();
 	$query = $connect->query("DELETE FROM stats");
 	if ($query)
-		http_response_code(204);
+		http_response_code(200);
 	else
 		$error->err("Some problems with deleting. Please try again.");
 }

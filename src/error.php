@@ -16,7 +16,7 @@ class Errors {
 				"message" => $message
 			)
 		);
-		die(json_encode($text));
+		die(json_encode($text, JSON_PRETTY_PRINT));
 	}
 }
 

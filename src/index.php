@@ -10,14 +10,12 @@ header('Content-Type: application/json; charset:UTF-8');
 
 $error = new Errors();
 $params = explode('/', $_GET["q"]);
-$operation = $params[0];
+$operation = $_GET['q'];
 // получение метода (POST GET)
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
 	case 'GET':
-		// if (isset($_GET['sort']) && $operation == 'stats' && isset($_GET['from']) && isset($_GET['to']))
-		// 	getSortStats($connect, $_GET);
 		if ($operation == 'stats' && isset($_GET['from']) && isset($_GET['to']))
 			getSortStats($connect, $_GET);
 		else
