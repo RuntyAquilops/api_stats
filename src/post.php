@@ -4,6 +4,8 @@ include_once 'utils.php';
 include_once 'error.php';
 include_once 'connection.php';
 
+header('Content-Type: application/json; charset:UTF-8');
+
 function postStats($connect, $data)
 {
 	$error = new Errors();
@@ -16,17 +18,9 @@ function postStats($connect, $data)
 	$query = $connect->query("INSERT INTO stats (`id_event`, `date`, `views`, `clicks`, `cost`)
 							  VALUES (NULL, '$date', '$views', '$clicks', '$cost')");
 	if ($query && isValidDate($date))
-		http_response_code(200);
+		responseCode("Data added successfully.");
 	else
 		$error->err("Can`t insert data.");
-}
-
-function getPost($connect, $var)
-{
-	if (isset($_POST[$var]))
-		return $connect->real_escape_string($_POST[$var]);
-	else
-		return 0;
 }
 
 ?>

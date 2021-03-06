@@ -35,9 +35,10 @@ function getSortStats($connect, $data)
 			$stats_list = [];
 			while ($stats = $query->fetch_assoc())
 				$stats_list[] = $stats;
+			http_response_code(200);
 			echo json_encode($stats_list, JSON_PRETTY_PRINT);
 	    } else
-	        $er->err("Sorry, some problems with database.", 500);
+	        $error->err("Sorry, some problems with database.", 500);
     } elseif (!$exist) {
 		$query = $connect->query("SELECT *, cost/clicks AS cpc, cost/views*1000 AS cpm
 								  FROM stats
@@ -47,6 +48,7 @@ function getSortStats($connect, $data)
 			$stats_list = [];
 			while ($stats = $query->fetch_assoc())
 				$stats_list[] = $stats;
+			http_response_code(200);
 			echo json_encode($stats_list, JSON_PRETTY_PRINT);
 		}
 	} else

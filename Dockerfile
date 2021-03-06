@@ -1,5 +1,6 @@
 FROM php:7.4.12-apache
 
+RUN a2enmod rewrite
 RUN apt-get update && apt-get -y upgrade \
 	&& docker-php-ext-install mysqli \
 	&& apt-get install curl \
