@@ -46,4 +46,4 @@ ALTER TABLE `stats`
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `id_event` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_event` int(10) NOT NULL AUTO_INCREMENT;

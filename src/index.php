@@ -32,6 +32,8 @@ switch ($method) {
 	case 'DELETE':
 		if ($operation == 'stats')
 			delStats($connect);
+		else
+			$error->err("Uncorrest request. Check params.", 422);
 		break;
 	default:
 		header('HTTP/1.1 405 Method Not Allowed');
